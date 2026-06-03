@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlimWell - Healthcare SaaS Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #0f172a, #1e3a5f, #0f172a);
+            color: #e0f2fe;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        nav .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav button {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25%;
+            width: 24rem;
+            height: 24rem;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 25%;
+            width: 20rem;
+            height: 20rem;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            border-radius: 9999px;
+            color: #67e8f9;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #a5f3fc, #93c5fd, #d8b4fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #bfdbfe;
+            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        button {
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: #93c5fd;
+            margin-top: 1rem;
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Problem/Solution Section */
+        .section {
+            padding: 5rem 0;
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .section.dark {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h2 .gradient-text {
+            display: block;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(30, 41, 59, 0.3));
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(34, 211, 238, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .card-problem {
+            color: #f87171;
+            font-weight: bold;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-solution {
+            color: #67e8f9;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+
+        /* How It Works */
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .workflow-step {
+            position: relative;
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(34, 211, 238, 0.4);
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .workflow-step h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .workflow-step p {
+            color: #bfdbfe;
+            font-size: 0.875rem;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 2rem;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            border-color: rgba(34, 211, 238, 0.6);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+
+        .feature p {
+            color: #bfdbfe;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(30, 41, 59, 0.3));
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 0.5rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #bfdbfe;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: #67e8f9;
+        }
+
+        /* Security Section */
+        .security-section {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.1));
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+            padding: 5rem 0;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .security-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .security-item p {
+            color: #bfdbfe;
+            font-size: 0.875rem;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            padding: 2rem;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 0.5rem;
+            background: rgba(30, 58, 95, 0.2);
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+            border-color: rgba(34, 211, 238, 0.6);
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #67e8f9;
+            margin: 1rem 0;
+        }
+
+        .price-users {
+            color: #bfdbfe;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: #bfdbfe;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: #67e8f9;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.1));
+            border-top: 1px solid rgba(34, 211, 238, 0.3);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            color: #bfdbfe;
+            margin-bottom: 2rem;
+        }
+
+        .cta-note {
+            color: #93c5fd;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            padding: 3rem 0;
+            color: #93c5fd;
+            font-size: 0.875rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section a {
+            color: #93c5fd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #67e8f9;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.875rem; }
+            h2 { font-size: 1.5rem; }
+            .pricing-card.featured { transform: scale(1); }
+            .button-group { flex-direction: column; }
+            button { width: 100%; }
+            .footer-bottom { flex-direction: column; }
+        }
+
+        /* Scroll Animation Styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Form Styles */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .contact-modal.active {
+            display: flex;
+        }
+
+        .contact-form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .contact-form-container h2 {
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0f172a;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e0e7ff;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-buttons button {
+            flex: 1;
+            padding: 0.75rem;
+        }
+
+        .form-buttons .btn-cancel {
+            background: #e0e7ff !important;
+            color: #0f172a !important;
+            border: none;
+        }
+
+        .form-buttons .btn-cancel:hover {
+            background: #c7d2fe !important;
+        }
+
+        .close-form {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #0f172a;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: #0f172a;
+        }
+
+        .form-success.active {
+            display: block;
+        }
+
+        .form-success h3 {
+            color: #06b6d4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Counter Animation */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #67e8f9;
+        }
+        /* Chatbot Styles */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            height: 600px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .chatbot-widget.hidden {
+            display: none;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(400px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chatbot-minimize {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-minimize:hover {
+            transform: scale(1.2);
+        }
+
+        /* Floating Chat Button */
+        .floating-chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(6, 182, 212, 0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-chat-button.show {
+            display: flex;
+        }
+
+        .floating-chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(6, 182, 212, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(6, 182, 212, 0.7); }
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.5rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .message.bot .message-bubble {
+            background: #f0f9ff;
+            color: #0f172a;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+        }
+
+        .chatbot-input {
+            border-top: 1px solid #e0e7ff;
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #e0e7ff;
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .chatbot-input input:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .chatbot-hidden {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-widget {
+                width: calc(100% - 20px);
+                height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SlimWell</div>
+            <button class="btn-primary" onclick="openContactForm()">Schedule Demo</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="badge">✓ Trusted by 1,200+ Medical Practices</div>
+            <h1>
+                <span class="gradient-text">Transform Bodies,</span>
+                Not Practices
+            </h1>
+            <p>AI-powered patient management platform for weight loss clinics. Streamline consultations, track outcomes, and scale your medical aesthetic practice—HIPAA compliant, clinic-first design.</p>
+            
+            <div class="button-group">
+                <button class="btn-primary">Start Free Trial</button>
+                <button class="btn-secondary">Watch Demo (2 min)</button>
+            </div>
+
+            <div class="trust-badges">
+                <span>🔒 HIPAA Certified</span>
+                <span>🏆 SOC 2 Type II</span>
+                <span>📈 <span class="stat-number" id="counter">1,200</span>+ Practices Trust Us</span>
+            </div>
+            <div style="margin-top: 3rem; font-size: 1.5rem;" class="bounce">⬇️</div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="section dark fade-in">
+        <div class="container">
+            <h2><span class="gradient-text">The Weight Loss Practice Crisis</span></h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-problem">✗ Manual patient intake & follow-ups</div>
+                    <div class="card-solution">✓ Automated scheduling & outcome tracking</div>
+                </div>
+                <div class="card">
+                    <div class="card-problem">✗ Scattered treatment data across systems</div>
+                    <div class="card-solution">✓ Unified EHR integration for all procedures</div>
+                </div>
+                <div class="card">
+                    <div class="card-problem">✗ Limited before/after documentation</div>
+                    <div class="card-solution">✓ AI photo analysis & measurement tracking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2>The SlimWell Workflow</h2>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h3>Patient Intake</h3>
+                    <p>Digital forms + medical history AI analysis</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h3>Consultation</h3>
+                    <p>Guided protocol selection & goal setting</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h3>Treatment</h3>
+                    <p>Procedure tracking + photo documentation</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h3>Outcomes</h3>
+                    <p>Auto-generated reports & follow-up scheduling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section dark">
+        <div class="container">
+            <h2>Purpose-Built for Weight Loss</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Multi-Modality Support</h3>
+                    <p>Track GLP-1s, injectables, laser, surgical, and lifestyle coaching—all in one platform</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📉</div>
+                    <h3>Outcome Analytics</h3>
+                    <p>Weight loss trends, BMI tracking, and patient satisfaction metrics with automatic compliance documentation</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Appointment Intelligence</h3>
+                    <p>Smart scheduling for follow-ups based on treatment phases and insurance pre-auth requirements</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Patient Engagement</h3>
+                    <p>Automated reminders, progress updates, and mobile app for patients to track their journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2>Doctors Trust SlimWell</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"We cut patient intake time by 60%. That's hours saved every week we can spend on actual consultations."</p>
+                    <p class="testimonial-author">Dr. Sarah Chen, MD</p>
+                    <p class="testimonial-role">Weight Loss Specialist, California</p>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"The compliance documentation is automatic now. Before SlimWell, I spent 3 hours a week on paperwork."</p>
+                    <p class="testimonial-author">Dr. Michael Rodriguez, DO</p>
+                    <p class="testimonial-role">Aesthetic Medicine Practice Director, Texas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="security-section">
+        <div class="container">
+            <h2>Enterprise-Grade Security</h2>
+            <p style="text-align: center; color: #bfdbfe; margin-bottom: 3rem;">Built for healthcare. Audited for compliance.</p>
+            <div class="security-grid">
+                <div class="security-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔒</div>
+                    <h3>HIPAA Compliant</h3>
+                    <p>Full PHI encryption & audit logs</p>
+                </div>
+                <div class="security-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                    <h3>SOC 2 Type II</h3>
+                    <p>Annual security audits with clean reports</p>
+                </div>
+                <div class="security-item">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛡️</div>
+                    <h3>99.99% Uptime SLA</h3>
+                    <p>Zero downtime warranty for patient data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section">
+        <div class="container">
+            <h2>Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$799/mo</div>
+                    <p class="price-users">Up to 3 providers</p>
+                    <ul class="features-list">
+                        <li>Patient intake forms</li>
+                        <li>Appointment scheduling</li>
+                        <li>Basic reporting</li>
+                    </ul>
+                    <button class="btn-secondary" style="width: 100%;">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$2,299/mo</div>
+                    <p class="price-users">Up to 10 providers</p>
+                    <ul class="features-list">
+                        <li>Everything in Starter</li>
+                        <li>AI outcome analytics</li>
+                        <li>EHR integrations</li>
+                        <li>Team collaboration</li>
+                    </ul>
+                    <button class="btn-primary" style="width: 100%;">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p class="price-users">Unlimited</p>
+                    <ul class="features-list">
+                        <li>Everything in Professional</li>
+                        <li>Dedicated support</li>
+                        <li>Custom integrations</li>
+                        <li>Advanced compliance</li>
+                    </ul>
+                    <button class="btn-secondary" style="width: 100%;">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to transform your practice?</h2>
+            <p>14-day free trial. No credit card required.</p>
+            <button class="btn-primary">Start Free Trial</button>
+            <p class="cta-note">Plus 30-min onboarding call with a product specialist</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>SlimWell</h4>
+                    <p>AI-powered weight loss practice management.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#">Features</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Security</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Compliance</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SlimWell. All rights reserved.</p>
+                <p>HIPAA Certified • SOC 2 Type II</p>
+            </div>
+        </div>
+    <!-- Floating Chat Button -->
+    <button class="floating-chat-button" id="floatingChatButton" onclick="openChatbot()">💬</button>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbot">
+        <div class="chatbot-header">
+            <h3>SlimWell Assistant</h3>
+            <button class="chatbot-minimize" onclick="minimizeChatbot()">−</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot">
+                <div class="message-bubble">Hi! 👋 Welcome to SlimWell. How can I help you today?</div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your question..." onkeypress="handleChatInput(event)">
+            <button onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-form-container">
+            <button class="close-form" onclick="closeContactForm()">×</button>
+            
+            <div id="formContent">
+                <h2>Schedule a Demo</h2>
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Practice Name</label>
+                        <input type="text" name="practice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Tell us about your practice..."></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-cancel" onclick="closeContactForm()">Cancel</button>
+                        <button type="submit" class="btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="successMessage" class="form-success">
+                <h3>✓ Thank You!</h3>
+                <p>We'll be in touch within 24 hours to schedule your demo.</p>
+                <button class="btn-primary" onclick="closeContactForm()" style="margin-top: 1.5rem;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Minimize and Open Chatbot
+        function minimizeChatbot() {
+            document.getElementById('chatbot').classList.add('hidden');
+            document.getElementById('floatingChatButton').classList.add('show');
+        }
+
+        function openChatbot() {
+            document.getElementById('chatbot').classList.remove('hidden');
+            document.getElementById('floatingChatButton').classList.remove('show');
+            document.getElementById('chatbot-input').focus();
+        }
+
+        // Contact Form Functions
+        function openContactForm() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactForm() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.getElementById('formContent').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('contactForm').reset();
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+            
+            // In a real app, you'd send this data to a server here
+            setTimeout(() => {
+                closeContactForm();
+            }, 3000);
+        }
+
+        // Animated Counter
+        function animateCounter() {
+            const counter = document.getElementById('counter');
+            if (!counter) return;
+            
+            const target = 1200;
+            const duration = 2000;
+            const increment = target / (duration / 50);
+            let current = 0;
+
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = '1,200';
+                    clearInterval(interval);
+                } else {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 50);
+        }
+
+        // Scroll Animation
+        function observeElements() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            animateCounter();
+            observeElements();
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactForm();
+            }
+        });
+    </script>
+        const chatbotResponses = {
+            'pricing': 'We have three plans: Starter ($799/mo), Professional ($2,299/mo), and Enterprise (custom). Which interests you?',
+            'features': 'SlimWell includes patient intake automation, outcome analytics, appointment intelligence, and patient engagement tools. All HIPAA compliant!',
+            'hipaa': 'Yes! SlimWell is fully HIPAA compliant with SOC 2 Type II certification and 99.99% uptime SLA.',
+            'trial': 'We offer a 14-day free trial with no credit card required. You also get a 30-min onboarding call!',
+            'demo': 'You can watch our 2-minute demo video on the landing page, or schedule a personalized demo with our team.',
+            'integrations': 'SlimWell integrates with major EHR systems and supports multi-modality tracking (GLP-1s, injectables, laser, surgery).',
+            'support': 'We provide email support on all plans, plus dedicated support on Professional and Enterprise plans.',
+            'data': 'Your data is encrypted, backed up daily, and you maintain full control. We never sell or share patient data.',
+            'default': 'That\'s a great question! For more details, you can schedule a demo or contact our sales team. What else can I help with?'
+        };
+
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.classList.toggle('chatbot-hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbot-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Simulate typing delay
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addMessage(response, 'bot');
+            }, 500);
+        }
+
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            // Check for keywords
+            if (lowerMessage.includes('price') || lowerMessage.includes('cost')) return chatbotResponses.pricing;
+            if (lowerMessage.includes('feature')) return chatbotResponses.features;
+            if (lowerMessage.includes('hipaa') || lowerMessage.includes('secure') || lowerMessage.includes('compliance')) return chatbotResponses.hipaa;
+            if (lowerMessage.includes('trial') || lowerMessage.includes('free')) return chatbotResponses.trial;
+            if (lowerMessage.includes('demo')) return chatbotResponses.demo;
+            if (lowerMessage.includes('integration') || lowerMessage.includes('ehr')) return chatbotResponses.integrations;
+            if (lowerMessage.includes('support') || lowerMessage.includes('help')) return chatbotResponses.support;
+            if (lowerMessage.includes('data') || lowerMessage.includes('privacy')) return chatbotResponses.data;
+            
+            return chatbotResponses.default;
+        }
+
+        // Show chatbot on page load
+        window.addEventListener('load', () => {
+            // Chatbot shows by default, comment out if you want it hidden initially
+            // toggleChatbot();
+        });
+    </script>
